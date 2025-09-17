@@ -1,0 +1,5 @@
+Enter first number:     [ 10.0          ]   ← ← Float input box
+Enter second number:    [ 5.0           ]   ← ← Float input box
+Select operation:       [  /   ▼        ]   ← ← Dropdown menu
+[ Calculate ]                         ← ← Button
+Result: 2.0
