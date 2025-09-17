@@ -1,0 +1,44 @@
+import ipywidgets as widgets
+from IPython.display import display, clear_output
+
+
+num1_input = widgets.FloatText(description="Enter first number:")
+num2_input = widgets.FloatText(description="Enter second number:")
+operator_select = widgets.Dropdown(
+    options=['+', '-', '*', '/'],
+    value='+',
+    description='Select operation:'
+)
+calculate_button = widgets.Button(description="Calculate")
+result_output = widgets.Output()
+
+
+def calculate(b):
+    with result_output:
+        clear_output()
+        try:
+            num1 = num1_input.value
+            num2 = num2_input.value
+            operation = operator_select.value
+
+            if operation == "+":
+                result = num1 + num2
+            elif operation == "-":
+                result = num1 - num2
+            elif operation == "*":
+                result = num1 * num2
+            elif operation == "/":
+                if num2 != 0:
+                    result = num1 / num2
+                else:
+                    print("Error: Cannot divide by zero")
+                    return
+            print(f"Result: {result}")
+        except ValueError:
+            print("Error: Please enter valid numbers")
+
+
+calculate_button.on_click(calculate)
+
+
+widgets.VBox([num1_input, num2_input, operator_select, calculate_button, result_output])
